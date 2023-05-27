@@ -1,26 +1,39 @@
 package main
 
 import (
-	"context"
-	"genesis-test-task/services/storage/emails/messages/proto"
+	"genesis-test-task/services/email/dispatcher"
+	"genesis-test-task/services/email/dispatcher/messages/proto"
+	"genesis-test-task/services/email/dispatcher/transport"
+	kitgrpc "github.com/go-kit/kit/transport/grpc"
+	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
 	"log"
+	"net"
+	"os"
 )
 
+const dotEnvPath = "./services/storage/.env"
+
 func main() {
-	conn, err := grpc.Dial("localhost:2777", grpc.WithInsecure())
+	run()
+}
+
+func run() {
+	err := godotenv.Load(dotEnvPath)
+	network := os.Getenv("NETWORK")
+	port := os.Getenv("PORT")
+
+	service := dispatcher.NewService()
+	eps := dispatcher.NewEndpointSet(service)
+	grpcServer := transport.NewGRPCServer(eps)
+	baseServer := grpc.NewServer(grpc.UnaryInterceptor(kitgrpc.Interceptor))
+	proto.RegisterEmailServiceServer(baseServer, grpcServer)
+	lis, err := net.Listen(network, ":"+port)
 	if err != nil {
-		log.Fatalf("Failed to connect: %v", err)
+		log.Fatalf("Failed to listen: %v", err)
 	}
-	defer conn.Close()
 
-	// Create a new instance of the gRPC client
-	client := proto.NewStorageServiceClient(conn)
-
-	response, _ := client.GetAllEmails(context.Background(), &proto.GetAllEmailsRequest{})
-
-	emails := response.Email
-	for i := range emails {
-		print(emails[i] + " ")
+	if err := baseServer.Serve(lis); err != nil {
+		log.Fatalf("Failed to serve: %v", err)
 	}
 }
