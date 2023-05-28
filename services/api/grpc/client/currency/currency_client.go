@@ -2,14 +2,12 @@ package currency
 
 import (
 	"context"
-	"genesis-test-task/services/currency/rate/messages/proto"
+	"currency.com/currency/rate/messages/proto"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
 	"log"
 	"os"
 )
-
-const dotEnvPath = "./services/api/.env"
 
 var network string
 var port string
@@ -19,7 +17,7 @@ var connection *grpc.ClientConn
 type CurrencyGRPCClient struct{}
 
 func init() {
-	_ = godotenv.Load(dotEnvPath)
+	_ = godotenv.Load()
 	network = os.Getenv("NETWORK")
 	port = os.Getenv("CURRENCY_SERVICE_PORT")
 }

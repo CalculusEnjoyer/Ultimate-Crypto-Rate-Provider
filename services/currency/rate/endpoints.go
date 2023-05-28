@@ -2,7 +2,7 @@ package rate
 
 import (
 	"context"
-	"genesis-test-task/services/currency/rate/messages"
+	"currency.com/currency/rate/messages"
 	"github.com/go-kit/kit/endpoint"
 )
 

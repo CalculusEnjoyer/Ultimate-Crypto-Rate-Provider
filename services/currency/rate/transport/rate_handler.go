@@ -2,9 +2,9 @@ package transport
 
 import (
 	"context"
-	"genesis-test-task/services/currency/rate"
-	"genesis-test-task/services/currency/rate/messages"
-	"genesis-test-task/services/currency/rate/messages/proto"
+	"currency.com/currency/rate"
+	"currency.com/currency/rate/messages"
+	"currency.com/currency/rate/messages/proto"
 	grpctransport "github.com/go-kit/kit/transport/grpc"
 )
 

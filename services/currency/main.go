@@ -1,9 +1,9 @@
 package main
 
 import (
-	"genesis-test-task/services/currency/rate"
-	"genesis-test-task/services/currency/rate/messages/proto"
-	"genesis-test-task/services/currency/rate/transport"
+	"currency.com/currency/rate"
+	"currency.com/currency/rate/messages/proto"
+	"currency.com/currency/rate/transport"
 	kitgrpc "github.com/go-kit/kit/transport/grpc"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
@@ -12,14 +12,12 @@ import (
 	"os"
 )
 
-const DotEnvPath = "./services/currency/.env"
-
 func main() {
 	run()
 }
 
 func run() {
-	err := godotenv.Load(DotEnvPath)
+	err := godotenv.Load()
 	network := os.Getenv("NETWORK")
 	port := os.Getenv("PORT")
 

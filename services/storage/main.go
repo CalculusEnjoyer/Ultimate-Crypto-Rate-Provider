@@ -1,18 +1,16 @@
 package main
 
 import (
-	"genesis-test-task/services/storage/emails"
-	"genesis-test-task/services/storage/emails/messages/proto"
-	"genesis-test-task/services/storage/emails/transport"
 	kitgrpc "github.com/go-kit/kit/transport/grpc"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
 	"log"
 	"net"
 	"os"
+	"storage.com/storage/emails"
+	"storage.com/storage/emails/messages/proto"
+	"storage.com/storage/emails/transport"
 )
-
-const dotEnvPath = "./services/storage/.env"
 
 func main() {
 	run()
@@ -25,7 +23,7 @@ func init() {
 }
 
 func run() {
-	err := godotenv.Load(dotEnvPath)
+	err := godotenv.Load()
 	network := os.Getenv("NETWORK")
 	port := os.Getenv("PORT")
 

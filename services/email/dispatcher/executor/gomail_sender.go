@@ -1,14 +1,12 @@
 package executor
 
 import (
-	"genesis-test-task/services/email/dispatcher/executor/templates"
+	"email.com/email/dispatcher/executor/templates"
 	"github.com/go-gomail/gomail"
 	"github.com/joho/godotenv"
 	"os"
 	"strconv"
 )
-
-const dotEnvPath = "./services/email/.env"
 
 var port int
 var host string
@@ -18,7 +16,7 @@ var pass string
 type GomailSender struct{}
 
 func init() {
-	err := godotenv.Load(dotEnvPath)
+	err := godotenv.Load()
 
 	port, err = strconv.Atoi(os.Getenv("EMAIL_PORT"))
 	if err != nil {
@@ -32,10 +30,8 @@ func init() {
 
 func (s GomailSender) Send(content templates.EmailContent, email string) (err error) {
 	dialer := gomail.NewDialer(host, port, transmitter, pass)
-	if err := dialer.DialAndSend(s.createEmail(content, email)); err != nil {
-		return err
-	}
-	return nil
+	err = dialer.DialAndSend(s.createEmail(content, email))
+	return err
 }
 
 func (s GomailSender) createEmail(content templates.EmailContent, email string) *gomail.Message {

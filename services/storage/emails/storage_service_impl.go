@@ -2,9 +2,9 @@ package emails
 
 import (
 	"encoding/csv"
-	storageErrors "genesis-test-task/services/storage/emails/errors"
-	"genesis-test-task/services/storage/emails/messages"
-	"genesis-test-task/services/storage/emails/orchestrator"
+	storageErrors "storage.com/storage/emails/errors"
+	"storage.com/storage/emails/messages"
+	"storage.com/storage/emails/orchestrator"
 )
 
 type storageService struct {

@@ -2,8 +2,8 @@ package emails
 
 import (
 	"context"
-	"genesis-test-task/services/storage/emails/messages"
 	"github.com/go-kit/kit/endpoint"
+	"storage.com/storage/emails/messages"
 )
 
 type Endpoints struct {

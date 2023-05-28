@@ -2,10 +2,10 @@ package transport
 
 import (
 	"context"
-	"genesis-test-task/services/email/dispatcher"
-	"genesis-test-task/services/email/dispatcher/executor"
-	"genesis-test-task/services/email/dispatcher/executor/templates"
-	"genesis-test-task/services/email/dispatcher/messages/proto"
+	"email.com/email/dispatcher"
+	"email.com/email/dispatcher/executor"
+	"email.com/email/dispatcher/executor/templates"
+	"email.com/email/dispatcher/messages/proto"
 	grpctransport "github.com/go-kit/kit/transport/grpc"
 )
 

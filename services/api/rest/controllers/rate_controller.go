@@ -1,9 +1,9 @@
 package controllers
 
 import (
+	"api.com/api/grpc/client/currency"
+	"currency.com/currency/rate/messages/proto"
 	"encoding/json"
-	"genesis-test-task/services/api/grpc/client/currency"
-	"genesis-test-task/services/currency/rate/messages/proto"
 	"net/http"
 )
 

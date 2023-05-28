@@ -2,14 +2,12 @@ package storage
 
 import (
 	"context"
-	"genesis-test-task/services/storage/emails/messages/proto"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
 	"log"
 	"os"
+	"storage.com/storage/emails/messages/proto"
 )
-
-const dotEnvPath = "./services/api/.env"
 
 var network string
 var port string
@@ -19,7 +17,7 @@ var connection *grpc.ClientConn
 type StorageGRPCClient struct{}
 
 func init() {
-	_ = godotenv.Load(dotEnvPath)
+	_ = godotenv.Load()
 	network = os.Getenv("NETWORK")
 	port = os.Getenv("STORAGE_SERVICE_PORT")
 }

@@ -6,15 +6,13 @@ import (
 	"os"
 )
 
-const DotEnvPath = "./services/storage/.env"
-
 var StoragePath string
 var StorageFile *os.File
 
 type FileOrchestrator struct{}
 
 func init() {
-	err := godotenv.Load(DotEnvPath)
+	err := godotenv.Load()
 	StoragePath = os.Getenv("STORAGE_PATH")
 
 	if err != nil {

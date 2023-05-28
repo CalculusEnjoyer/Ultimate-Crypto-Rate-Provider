@@ -1,15 +1,14 @@
 package controllers
 
 import (
-	"genesis-test-task/services/api/grpc/client/currency"
-	"genesis-test-task/services/api/grpc/client/email"
-	"genesis-test-task/services/api/grpc/client/storage"
-	"genesis-test-task/services/api/rest/utils"
-	rateProto "genesis-test-task/services/currency/rate/messages/proto"
-	emailProto "genesis-test-task/services/email/dispatcher/messages/proto"
-	"genesis-test-task/services/storage/emails/errors"
-	"genesis-test-task/services/storage/emails/messages/proto"
+	"api.com/api/grpc/client/currency"
+	"api.com/api/grpc/client/email"
+	"api.com/api/grpc/client/storage"
+	"api.com/api/rest/utils"
+	rateProto "currency.com/currency/rate/messages/proto"
+	emailProto "email.com/email/dispatcher/messages/proto"
 	"net/http"
+	"storage.com/storage/emails/messages/proto"
 	"strconv"
 )
 
@@ -42,13 +41,8 @@ func AddEmail(w http.ResponseWriter, r *http.Request) {
 		Email: email,
 	})
 
-	if err == errors.EmailAlreadyExist {
-		http.Error(w, err.Error(), http.StatusConflict)
-		return
-	}
-
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusConflict)
+		http.Error(w, "email already exists in database", http.StatusConflict)
 		return
 	}
 
@@ -67,12 +61,17 @@ func SendEmails(w http.ResponseWriter, r *http.Request) {
 	emailsResponse := storageGRPCClient.GetAllEmails(proto.GetAllEmailsRequest{})
 	emails := emailsResponse.Email
 
+	var err error
 	for i := range emails {
-		emailGRPCClient.SendEmail(emailProto.SendEmailRequest{
+		err = emailGRPCClient.SendEmail(emailProto.SendEmailRequest{
 			Body:    utils.BtcRateString + strconv.FormatFloat(rate, 'f', -1, 64),
 			Subject: utils.BtcRateSubject,
 			To:      emails[i],
 		})
+	}
+
+	if err != nil {
+		http.Error(w, "some emails were not sent because of incorrect email structure", http.StatusBadRequest)
 	}
 
 	return

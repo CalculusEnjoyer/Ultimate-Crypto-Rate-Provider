@@ -1,7 +1,7 @@
 package emails
 
 import (
-	"genesis-test-task/services/storage/emails/messages"
+	"storage.com/storage/emails/messages"
 )
 
 type StorageService interface {

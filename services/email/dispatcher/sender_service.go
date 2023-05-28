@@ -1,7 +1,7 @@
 package dispatcher
 
 import (
-	"genesis-test-task/services/email/dispatcher/executor"
+	"email.com/email/dispatcher/executor"
 )
 
 type EmailService interface {

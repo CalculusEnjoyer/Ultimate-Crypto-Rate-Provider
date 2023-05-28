@@ -1,14 +1,34 @@
 package main
 
 import (
-	"genesis-test-task/services/api/rest"
-	"genesis-test-task/services/api/rest/controllers"
+	"api.com/api/rest"
+	"api.com/api/rest/controllers"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/joho/godotenv"
+	"log"
 	"net/http"
+	"os"
+	"strconv"
 )
 
+var port int
+
 func main() {
+	run()
+}
+
+func init() {
+	godotenv.Load()
+	p, err := strconv.Atoi(os.Getenv("PORT"))
+	if err != nil {
+		log.Fatalf("Wrong Port")
+	}
+
+	port = p
+}
+
+func run() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 
@@ -16,5 +36,5 @@ func main() {
 	r.Post(rest.Api+rest.AddEmails, controllers.AddEmail)
 	r.Post(rest.Api+rest.SendEmails, controllers.SendEmails)
 
-	http.ListenAndServe(":8080", r)
+	http.ListenAndServe(":"+strconv.Itoa(port), r)
 }

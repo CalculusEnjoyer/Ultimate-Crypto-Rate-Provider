@@ -1,7 +1,7 @@
 package rate
 
 import (
-	"genesis-test-task/services/currency/rate/messages"
+	"currency.com/currency/rate/messages"
 )
 
 type RateService interface {

@@ -2,7 +2,7 @@ package dispatcher
 
 import (
 	"context"
-	"genesis-test-task/services/email/dispatcher/executor"
+	"email.com/email/dispatcher/executor"
 	"github.com/go-kit/kit/endpoint"
 )
 

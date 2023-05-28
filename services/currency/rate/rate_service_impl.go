@@ -1,8 +1,8 @@
 package rate
 
 import (
-	"genesis-test-task/services/currency/rate/messages"
-	"genesis-test-task/services/currency/rate/providsers"
+	"currency.com/currency/rate/messages"
+	"currency.com/currency/rate/providsers"
 	"time"
 )
 

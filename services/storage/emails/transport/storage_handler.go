@@ -2,10 +2,10 @@ package transport
 
 import (
 	"context"
-	"genesis-test-task/services/storage/emails"
-	"genesis-test-task/services/storage/emails/messages"
-	"genesis-test-task/services/storage/emails/messages/proto"
 	grpctransport "github.com/go-kit/kit/transport/grpc"
+	"storage.com/storage/emails"
+	"storage.com/storage/emails/messages"
+	"storage.com/storage/emails/messages/proto"
 )
 
 type grpcServer struct {
@@ -46,26 +46,26 @@ func (g grpcServer) GetAllEmails(ctx context.Context, request *proto.GetAllEmail
 	return &response, nil
 }
 
-func decodeGRPCAddEmailRequest(_ context.Context, grpcReq interface{}) (any, error) {
+func decodeGRPCAddEmailRequest(_ context.Context, grpcReq interface{}) (interface{}, error) {
 	req := grpcReq.(*proto.AddEmailRequest)
 	return messages.Email{Value: req.Email}, nil
 }
 
-func decodeGRPCAddEmailResponse(_ context.Context, grpcRes interface{}) (any, error) {
+func decodeGRPCAddEmailResponse(_ context.Context, grpcRes interface{}) (interface{}, error) {
 	if grpcRes == nil {
-		return proto.AddEmailResponse{Error: ""}, nil
+		return proto.AddEmailResponse{}, nil
 	}
 	req := grpcRes.(*error)
 	return proto.AddEmailResponse{Error: (*req).Error()}, nil
 }
 
-func decodeGRPCGetAllEmailsRequest(_ context.Context, grpcReq interface{}) (any, error) {
+func decodeGRPCGetAllEmailsRequest(_ context.Context, grpcReq interface{}) (interface{}, error) {
 	req := grpcReq.(*proto.GetAllEmailsRequest)
 
 	return req, nil
 }
 
-func decodeGRPCGetAllEmailsResponse(_ context.Context, grpcRes interface{}) (any, error) {
+func decodeGRPCGetAllEmailsResponse(_ context.Context, grpcRes interface{}) (interface{}, error) {
 	res := grpcRes.([]messages.Email)
 
 	var emails []string
