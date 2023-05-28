@@ -22,7 +22,7 @@ in `.env` file (path: `services/email/.env`)
 ## Requests
 
 ```
-GET  -> http://localhost:8080/rate
-POST -> http://localhost:8080/subscribe             
-POST -> http://localhost:8080/sendEmails
+GET  -> http://localhost:8080/api/rate
+POST -> http://localhost:8080/api/subscribe             
+POST -> http://localhost:8080/api/sendEmails
 ```
