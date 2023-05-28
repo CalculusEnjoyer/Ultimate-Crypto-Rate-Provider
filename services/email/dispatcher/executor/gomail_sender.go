@@ -1,7 +1,7 @@
 package executor
 
 import (
-	"email.com/email/dispatcher/executor/templates"
+	"email/dispatcher/executor/templates"
 	"github.com/go-gomail/gomail"
 	"github.com/joho/godotenv"
 	"os"

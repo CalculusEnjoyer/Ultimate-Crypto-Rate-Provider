@@ -1,7 +1,7 @@
 package rate
 
 import (
-	"currency.com/currency/rate/messages"
+	"currency/rate/messages"
 )
 
 type RateService interface {

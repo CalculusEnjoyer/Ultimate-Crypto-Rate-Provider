@@ -1,4 +1,4 @@
-module currency.com/currency
+module currency
 
 go 1.20
 

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"currency.com/currency/rate"
-	"currency.com/currency/rate/messages/proto"
-	"currency.com/currency/rate/transport"
+	"currency/rate"
+	"currency/rate/messages/proto"
+	"currency/rate/transport"
 	kitgrpc "github.com/go-kit/kit/transport/grpc"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"

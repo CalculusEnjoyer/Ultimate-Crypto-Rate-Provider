@@ -1,4 +1,4 @@
-module email.com/email
+module email
 
 go 1.20
 

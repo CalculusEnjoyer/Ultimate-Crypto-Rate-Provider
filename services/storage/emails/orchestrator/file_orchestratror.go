@@ -22,7 +22,7 @@ func init() {
 
 func (o *FileOrchestrator) OpenCSVFile() (*os.File, error) {
 
-	file, err := os.OpenFile(StoragePath, os.O_APPEND|os.O_CREATE, os.ModePerm)
+	file, err := os.OpenFile(StoragePath, os.O_APPEND|os.O_CREATE|os.O_RDWR, os.ModePerm)
 	if err != nil {
 		return nil, err
 	}

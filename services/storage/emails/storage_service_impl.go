@@ -2,9 +2,9 @@ package emails
 
 import (
 	"encoding/csv"
-	storageErrors "storage.com/storage/emails/errors"
-	"storage.com/storage/emails/messages"
-	"storage.com/storage/emails/orchestrator"
+	storageErrors "storage/emails/errors"
+	"storage/emails/messages"
+	"storage/emails/orchestrator"
 )
 
 type storageService struct {

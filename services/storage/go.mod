@@ -1,4 +1,4 @@
-module storage.com/storage
+module storage
 
 go 1.20
 

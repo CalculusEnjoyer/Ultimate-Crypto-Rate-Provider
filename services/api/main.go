@@ -1,8 +1,8 @@
 package main
 
 import (
-	"api.com/api/rest"
-	"api.com/api/rest/controllers"
+	"api/rest"
+	"api/rest/controllers"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/joho/godotenv"

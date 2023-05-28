@@ -1,20 +1,11 @@
-module api.com/api
+module api
 
 go 1.20
 
-replace (
-	currency.com/currency => ../currency
-	email.com/email => ../email
-	storage.com/storage => ../storage
-)
-
 require (
-	currency.com/currency v0.0.0-00010101000000-000000000000
-	email.com/email v0.0.0-00010101000000-000000000000
 	github.com/go-chi/chi/v5 v5.0.8
 	github.com/joho/godotenv v1.5.1
 	google.golang.org/grpc v1.55.0
-	storage.com/storage v0.0.0-00010101000000-000000000000
 )
 
 require (

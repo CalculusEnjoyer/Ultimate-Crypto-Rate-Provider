@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"api.com/api/grpc/client/currency"
-	"currency.com/currency/rate/messages/proto"
+	"api/grpc/client/currency"
+	"currency/rate/messages/proto"
 	"encoding/json"
 	"net/http"
 )

@@ -1,9 +1,9 @@
 package emails
 
 import (
-	"context"
+	context1 "context"
 	"github.com/go-kit/kit/endpoint"
-	"storage.com/storage/emails/messages"
+	"storage/emails/messages"
 )
 
 type Endpoints struct {
@@ -19,14 +19,14 @@ func NewEndpointSet(svc StorageService) Endpoints {
 }
 
 func MakeGetAllEmailsEndpoint(svc StorageService) endpoint.Endpoint {
-	return func(ctx context.Context, request interface{}) (interface{}, error) {
+	return func(ctx context1.Context, request interface{}) (interface{}, error) {
 		emails, err := svc.GetAllEmails()
 		return emails, err
 	}
 }
 
 func MakeAddEmailEndpoint(svc StorageService) endpoint.Endpoint {
-	return func(ctx context.Context, request interface{}) (interface{}, error) {
+	return func(ctx context1.Context, request interface{}) (interface{}, error) {
 		req := request.(messages.Email)
 		err := svc.AddEmail(req)
 		return nil, err

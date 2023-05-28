@@ -1,7 +1,7 @@
 package emails
 
 import (
-	"storage.com/storage/emails/messages"
+	"storage/emails/messages"
 )
 
 type StorageService interface {

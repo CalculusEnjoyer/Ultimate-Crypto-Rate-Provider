@@ -1,7 +1,7 @@
 package dispatcher
 
 import (
-	sender "email.com/email/dispatcher/executor"
+	sender "email/dispatcher/executor"
 )
 
 var dispatcher = sender.GomailSender{}

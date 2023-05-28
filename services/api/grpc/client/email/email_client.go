@@ -2,7 +2,7 @@ package email
 
 import (
 	"context"
-	"email.com/email/dispatcher/messages/proto"
+	"email/dispatcher/messages/proto"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
 	"log"
@@ -18,7 +18,7 @@ type EmailGRPCClient struct{}
 
 func init() {
 	_ = godotenv.Load()
-	network = os.Getenv("NETWORK")
+	network = os.Getenv("EMAIL_NETWORK")
 	port = os.Getenv("EMAIL_SERVICE_PORT")
 }
 

@@ -1,7 +1,7 @@
 package dispatcher
 
 import (
-	"email.com/email/dispatcher/executor"
+	"email/dispatcher/executor"
 )
 
 type EmailService interface {

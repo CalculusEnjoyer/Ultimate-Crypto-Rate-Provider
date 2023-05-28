@@ -2,10 +2,10 @@ package transport
 
 import (
 	"context"
-	"email.com/email/dispatcher"
-	"email.com/email/dispatcher/executor"
-	"email.com/email/dispatcher/executor/templates"
-	"email.com/email/dispatcher/messages/proto"
+	"email/dispatcher"
+	"email/dispatcher/executor"
+	"email/dispatcher/executor/templates"
+	"email/dispatcher/messages/proto"
 	grpctransport "github.com/go-kit/kit/transport/grpc"
 )
 

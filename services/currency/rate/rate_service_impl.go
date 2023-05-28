@@ -1,8 +1,8 @@
 package rate
 
 import (
-	"currency.com/currency/rate/messages"
-	"currency.com/currency/rate/providsers"
+	"currency/rate/messages"
+	"currency/rate/providsers"
 	"time"
 )
 

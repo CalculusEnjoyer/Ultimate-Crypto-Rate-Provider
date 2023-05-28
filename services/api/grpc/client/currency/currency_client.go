@@ -2,7 +2,7 @@ package currency
 
 import (
 	"context"
-	"currency.com/currency/rate/messages/proto"
+	"currency/rate/messages/proto"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
 	"log"
@@ -18,7 +18,7 @@ type CurrencyGRPCClient struct{}
 
 func init() {
 	_ = godotenv.Load()
-	network = os.Getenv("NETWORK")
+	network = os.Getenv("CURRENCY_NETWORK")
 	port = os.Getenv("CURRENCY_SERVICE_PORT")
 }
 

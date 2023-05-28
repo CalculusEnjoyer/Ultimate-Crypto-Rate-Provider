@@ -2,9 +2,9 @@ package transport
 
 import (
 	"context"
-	"currency.com/currency/rate"
-	"currency.com/currency/rate/messages"
-	"currency.com/currency/rate/messages/proto"
+	"currency/rate"
+	"currency/rate/messages"
+	"currency/rate/messages/proto"
 	grpctransport "github.com/go-kit/kit/transport/grpc"
 )
 

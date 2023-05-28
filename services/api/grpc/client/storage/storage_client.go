@@ -6,10 +6,10 @@ import (
 	"google.golang.org/grpc"
 	"log"
 	"os"
-	"storage.com/storage/emails/messages/proto"
+	"storage/emails/messages/proto"
 )
 
-var network string
+var storageNetwork string
 var port string
 var client proto.StorageServiceClient
 var connection *grpc.ClientConn
@@ -18,7 +18,7 @@ type StorageGRPCClient struct{}
 
 func init() {
 	_ = godotenv.Load()
-	network = os.Getenv("NETWORK")
+	storageNetwork = os.Getenv("STORAGE_NETWORK")
 	port = os.Getenv("STORAGE_SERVICE_PORT")
 }
 
@@ -50,7 +50,7 @@ func (c *StorageGRPCClient) GetAllEmails(request proto.GetAllEmailsRequest) prot
 }
 
 func (c *StorageGRPCClient) getConnection() *grpc.ClientConn {
-	conn, err := grpc.Dial(network+":"+port, grpc.WithInsecure())
+	conn, err := grpc.Dial(storageNetwork+":"+port, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("Failed to connect: %v", err)
 	}

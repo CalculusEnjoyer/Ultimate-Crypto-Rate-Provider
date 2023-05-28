@@ -1,7 +1,7 @@
 package executor
 
 import (
-	"email.com/email/dispatcher/executor/templates"
+	"email/dispatcher/executor/templates"
 )
 
 type Sender interface {

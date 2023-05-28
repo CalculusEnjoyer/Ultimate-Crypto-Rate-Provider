@@ -7,19 +7,15 @@ import (
 	"log"
 	"net"
 	"os"
-	"storage.com/storage/emails"
-	"storage.com/storage/emails/messages/proto"
-	"storage.com/storage/emails/transport"
+	"storage/emails"
+	"storage/emails/messages/proto"
+	"storage/emails/transport"
 )
-
-func main() {
-	run()
-}
 
 var StorageFile *os.File
 
-func init() {
-
+func main() {
+	run()
 }
 
 func run() {

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"email.com/email/dispatcher"
-	"email.com/email/dispatcher/messages/proto"
-	"email.com/email/dispatcher/transport"
+	"email/dispatcher"
+	"email/dispatcher/messages/proto"
+	"email/dispatcher/transport"
 	kitgrpc "github.com/go-kit/kit/transport/grpc"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"

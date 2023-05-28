@@ -1,29 +1,23 @@
 version: '3'
 services:
   currency:
-    build:
-      context: ./currency
-      dockerfile: Dockerfile
+    build: ./currency
     ports:
-      - 2779:2779
+      - 8083:8083
 
   storage:
-    build:
-      context: ./storage
-      dockerfile: Dockerfile
+    build: ./storage
     ports:
-      - 2778:2778
+      - 8082:8082
 
   email:
-    build:
-      context: ./email
-      dockerfile: Dockerfile
+    build: ./email
     ports:
-      - 2777:2777
+      - 8081:8081
 
   api:
     build:
-      context: ./api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./api/Dockerfile
     ports:
       - 8080:8080

@@ -1,14 +1,14 @@
 package controllers
 
 import (
-	"api.com/api/grpc/client/currency"
-	"api.com/api/grpc/client/email"
-	"api.com/api/grpc/client/storage"
-	"api.com/api/rest/utils"
-	rateProto "currency.com/currency/rate/messages/proto"
-	emailProto "email.com/email/dispatcher/messages/proto"
+	"api/grpc/client/currency"
+	"api/grpc/client/email"
+	"api/grpc/client/storage"
+	"api/rest/utils"
+	rateProto "currency/rate/messages/proto"
+	emailProto "email/dispatcher/messages/proto"
 	"net/http"
-	"storage.com/storage/emails/messages/proto"
+	"storage/emails/messages/proto"
 	"strconv"
 )
 
