@@ -15,7 +15,10 @@ Open `services` directory in the terminal and run:
 ```docker compose up```
 
 Application will run on localhost:8080 by default.
-
+## Setting up sender email
+Test credentials for quick testing are already set, so you do not have to do anything 
+in order to set up it. But if you want to change sender email, you can do this in `email` service
+in `.env` file (path: `services/email/.env`)
 ## Requests
 
 ```
