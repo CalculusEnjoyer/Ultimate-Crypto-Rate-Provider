@@ -5,7 +5,9 @@ This project is a powerful and scalable solution for fetching real-time cryptocu
 rates and dispatching to subscribed emails. Implemented using a microservice architecture of 4 services 
 and the gRPC for connection between them. All services are independent and run in separate Docker containers.
 
-
+<br />
+<img src="https://github.com/CalculusEnjoyer/Ultimate-Crypto-Rate-Provider/blob/main/micro.png">
+<br />
 
 ## Running the application
 Open `services` directory in the terminal and run:
