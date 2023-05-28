@@ -31,7 +31,7 @@ func NewGRPCServer(ep emails.Endpoints) proto.StorageServiceServer {
 func (g grpcServer) AddEmail(ctx context.Context, request *proto.AddEmailRequest) (*proto.AddEmailResponse, error) {
 	_, rep, err := g.addEmail.ServeGRPC(ctx, request)
 	if err != nil {
-		return nil, err
+		return &proto.AddEmailResponse{}, err
 	}
 	response := rep.(proto.AddEmailResponse)
 	return &response, nil

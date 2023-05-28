@@ -28,8 +28,6 @@ func run() {
 	grpcServer := transport.NewGRPCServer(eps)
 	baseServer := grpc.NewServer(grpc.UnaryInterceptor(kitgrpc.Interceptor))
 	proto.RegisterRateServiceServer(baseServer, grpcServer)
-	check := os.Getenv("NETWORK")
-	print(check)
 	lis, err := net.Listen(network, ":"+port)
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)

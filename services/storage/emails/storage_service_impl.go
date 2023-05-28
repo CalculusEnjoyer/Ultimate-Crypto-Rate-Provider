@@ -2,7 +2,7 @@ package emails
 
 import (
 	"encoding/csv"
-	"errors"
+	storageErrors "genesis-test-task/services/storage/emails/errors"
 	"genesis-test-task/services/storage/emails/messages"
 	"genesis-test-task/services/storage/emails/orchestrator"
 )
@@ -26,7 +26,7 @@ func (r *storageService) AddEmail(email messages.Email) (err error) {
 	}
 
 	if isExist {
-		err = errors.New(email.Value + " already exists in the database.")
+		err = storageErrors.EmailAlreadyExist
 	}
 
 	return err

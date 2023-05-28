@@ -1,22 +1,47 @@
 package main
 
 import (
-	"context"
-	"genesis-test-task/services/email/dispatcher/messages/proto"
-	"google.golang.org/grpc"
-	"log"
+	"genesis-test-task/services/api/grpc/client/currency"
+	"genesis-test-task/services/api/grpc/client/email"
+	"genesis-test-task/services/api/grpc/client/storage"
+	"genesis-test-task/services/currency/rate/messages/proto"
+	emailproto "genesis-test-task/services/email/dispatcher/messages/proto"
+	storageproto "genesis-test-task/services/storage/emails/messages/proto"
 )
 
 func main() {
-	conn, err := grpc.Dial("localhost:2777", grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("Failed to connect: %v", err)
+	var check = currency.CurrencyGRPCClient{}
+
+	res, _ := check.GetRate(proto.RateRequest{
+		BaseCurrency:   "bitcoin",
+		TargetCurrency: "uah",
+	})
+
+	print(res.Rate)
+
+	var emailCheck = email.EmailGRPCClient{}
+
+	resnew := emailCheck.SendEmail(emailproto.SendEmailRequest{
+		Body:    "Check",
+		Subject: "fjdljf",
+		To:      "kravchukzxy@gmail.com",
+	})
+
+	print(resnew.Error)
+
+	var storageCheck = storage.StorageGRPCClient{}
+
+	resnew1 := storageCheck.AddEmail(storageproto.AddEmailRequest{
+		Email: "CHECKk",
+	})
+
+	print(resnew1.Error)
+
+	resnew2 := storageCheck.GetAllEmails(storageproto.GetAllEmailsRequest{})
+
+	emails := resnew2.GetEmail()
+
+	for i := range emails {
+		print(emails[i])
 	}
-	defer conn.Close()
-
-	// Create a new instance of the gRPC client
-	client := proto.NewEmailServiceClient(conn)
-
-	resp, _ := client.SendEmail(context.Background(), &proto.SendEmailRequest{Body: "Check", Subject: "Who", To: "kravchukzxy@gmail.com"})
-	print(resp.Error)
 }

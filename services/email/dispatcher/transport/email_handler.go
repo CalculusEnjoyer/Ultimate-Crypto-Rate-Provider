@@ -34,7 +34,7 @@ func (g grpcServer) SendEmail(ctx context.Context, request *proto.SendEmailReque
 
 func decodeGRPCSendEmailRequest(_ context.Context, grpcReq interface{}) (interface{}, error) {
 	req := grpcReq.(*proto.SendEmailRequest)
-	return executor.SendEmailRequest{Content: templates.EmailContent{Subject: req.Subject, Body: req.Subject}, To: req.To}, nil
+	return executor.SendEmailRequest{Content: templates.EmailContent{Subject: req.Subject, Body: req.Body}, To: req.To}, nil
 }
 
 func decodeGRPCSendEmailResponse(_ context.Context, grpcReply interface{}) (interface{}, error) {
